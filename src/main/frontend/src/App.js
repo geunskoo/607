@@ -14,7 +14,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <p>{hello}</p>
+      <p>우리 이제 {hello}</p>
     </div>
   );
 }
