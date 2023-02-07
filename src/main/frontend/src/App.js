@@ -4,17 +4,25 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
-  const [hello, setHello] = useState("");
+    const [text, setText] = useState('');
+    const handleClick1 = async () => {
+        const res = await axios.get('/test1');
+        const data = await res.data;
+        console.log(data);
+        setText(data)
+    }
+    const handleClick2 = async () => {
+        const res = await axios.get('/test2');
+        const data = await res.data;
+        console.log(data);
+        setText(data)
+    }
 
-  useEffect(() => {
-    axios
-      .get("/hello")
-      .then((res) => setHello(res.data))
-      .catch(console.log);
-  }, []);
   return (
     <div className="App">
-      <p>우리 이제 {hello}</p>
+      <button onClick={handleClick1}>test1</button>
+      <button onClick={handleClick2}>test2</button>
+        <span>{text}</span>
     </div>
   );
 }
